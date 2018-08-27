@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.progress-wrapper {
+  position: absolute;
+  top: 45%;
+  left: 60%;
+  max-width: 40%;
+  max-height: 30%;
+  overflow: scroll;
+}
+.form-wrapper {
+  position: absolute;
+  top: 45%;
+  left: 10%;
+  max-width: 40%;
+  max-height: 40%;
+  overflow: scroll;
+}
+
+.history-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  max-width: 40%;
+  max-height: 30%;
+  overflow: scroll;
+
+}
+
+.instructions-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  max-width: 40%;
+  max-height: 30%;
+  overflow: scroll;
+}
+
+@media only screen and (max-width: 480px) {
+  .progress-wrapper {
+    position: static;
+    top: 20px;
+    max-width: 90%;
+    height: auto;
+  }
+  .form-wrapper {
+    position: static;
+    max-width: 90%;
+    height: auto;
+  }
+
+  .history-wrapper {
+    position: static;
+    max-width: 90%;
+    height: auto;
+  }
+
+  .instructions-wrapper {
+    position: static;
+    max-width: 90%;
+    height: auto;
+  }
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
