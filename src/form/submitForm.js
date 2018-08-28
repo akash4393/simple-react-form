@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 
+const baseUrl = window.location.href;
+
 class SubmitForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -11,8 +13,24 @@ class SubmitForm extends React.Component {
 		window.localStorage.setItem(this.props.data.emailValue, JSON.stringify(this.props.data));
 	}
 
+	sendRequestToServer() {
+		let url = baseUrl + 'sendEmail'
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+            	'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(this.props.data)
+		})
+		.then(res => {
+			alert('email sent successfully');
+		})
+	}
+
 	nextOnClick() {
 		this.storeInLocalStorage();
+		this.sendRequestToServer();
 		this.props.onNext();
 	}
 

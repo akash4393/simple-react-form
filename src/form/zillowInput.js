@@ -2,6 +2,8 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+const baseUrl = window.location.href;
+
 class ZillowInput extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,16 +17,23 @@ class ZillowInput extends React.Component {
 			loading: true,
 			messageCode: 999
 		}
-		this.baseUrl = 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=X1-ZWz1gm5aizrj7v_5jgqp';
 		this.sendRequest();
 	}
 
 	sendRequest() {
-		let address = this.props.address;
-		let zip = this.props.zip;
-		let url = this.baseUrl + `&address=${address}&citystatezip=${zip}&rentzestimate=true`;
-		let result = '';
-		fetch(url)
+		let requestBody = {
+			address: this.props.address,
+			zip: this.props.zip
+		};
+		let url = baseUrl + 'getRent'
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+            	'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(requestBody)
+		})
 		.then(resp => resp.text())
 		.then(text => ((new window.DOMParser()).parseFromString(text, "text/xml")))
 		.then(body => { this.parseResponse(body); });
@@ -36,7 +45,7 @@ class ZillowInput extends React.Component {
 		let messageCode = parseInt(xmlResponse.querySelectorAll('message > code')[0].innerHTML);
 		if(messageCode === 508) {
 			this.setState({
-				formError: 'Address not found on Zillow. Please go back and update the address.',
+				formError: 'Address not found on Zillow. Please reload this page and try again with a different address.',
 				formValid: false,
 				messageCode: messageCode
 			});
