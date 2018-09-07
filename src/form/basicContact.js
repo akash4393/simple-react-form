@@ -8,7 +8,6 @@ class BasicContact extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		console.log(this.props);
 		this.state = {
 			firstNameValid: this.props.data.firstName ? true : false,
 			firstNameValue: this.props.data.firstName || '',

@@ -13,8 +13,6 @@ class ProgressComponent extends React.Component {
 	}
 
 	previousClicked() {
-		console.log('in previousClicked');
-		console.log(this.props);
 		switch(this.props.steps.currentStep){
 			case STEPS.GOOGLE_ADDRESS:
 				this.props.propogateAction(STEPS.BASIC_INFO, this.props.steps.formData)

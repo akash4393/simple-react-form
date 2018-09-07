@@ -7,6 +7,8 @@ import { STEPS } from '../redux/actions';
 import { connect } from 'react-redux';
 import nextStep from '../redux/actions';
 
+const baseUrl = window.location.href;
+
 class FormComponent extends React.Component {
 	constructor(props) {
 		super(props);
@@ -27,13 +29,24 @@ class FormComponent extends React.Component {
 	zillowNext(rentAmount) {
 		let rent = { rent: rentAmount };
 		this.formData = {...this.formData, ...rent};
-		//this.props.propogateAction(STEPS.COMPLETE, this.formData);
+		this.sendRequestToServer();
 		this.props.propogateAction(STEPS.BASIC_INFO, {});
 	}
 
-	/*submitNext() {
-		this.props.propogateAction(STEPS.BASIC_INFO, {});	
-	}*/
+	sendRequestToServer() {
+		let url = baseUrl + 'sendEmail'
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+            	'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(this.props.steps.formData)
+		})
+		.then(res => {
+			alert('email sent successfully');
+		})
+	}
 
 	render() {
 		switch(this.props.steps.currentStep){
