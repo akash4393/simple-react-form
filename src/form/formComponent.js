@@ -11,7 +11,7 @@ class FormComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		this.formData = {};
+		this.formData = this.props.steps.formData;
 	}
 
 	basicNext(basicFormInfo) {
@@ -27,26 +27,27 @@ class FormComponent extends React.Component {
 	zillowNext(rentAmount) {
 		let rent = { rent: rentAmount };
 		this.formData = {...this.formData, ...rent};
-		this.props.propogateAction(STEPS.COMPLETE, this.formData);
+		//this.props.propogateAction(STEPS.COMPLETE, this.formData);
+		this.props.propogateAction(STEPS.BASIC_INFO, {});
 	}
 
-	submitNext() {
+	/*submitNext() {
 		this.props.propogateAction(STEPS.BASIC_INFO, {});	
-	}
+	}*/
 
 	render() {
 		switch(this.props.steps.currentStep){
 			case STEPS.BASIC_INFO:
 				return(
-					<BasicContact onNext={(resp) => {this.basicNext(resp)}} />
+					<BasicContact data={this.props.steps.formData} onNext={(resp) => {this.basicNext(resp)}} />
 				);
 			case STEPS.GOOGLE_ADDRESS:
 				return(
-					<AddressInput onNext={(googleAddressInfo) => {this.addressNext(googleAddressInfo)}} onPrevious={this.addressPrevious} />
+					<AddressInput data={this.props.steps.formData} onNext={(googleAddressInfo) => {this.addressNext(googleAddressInfo)}} onPrevious={this.addressPrevious} />
 				);
 			case STEPS.ZILLOW_RESPONSE:
 				return(
-					<ZillowInput onNext={(rentAmount) => {this.zillowNext(rentAmount)}} address={this.props.steps.formData.address} zip={this.props.steps.formData.zip} onPrevious={this.zillowPrevious} />
+					<ZillowInput data={this.props.steps.formData} onNext={(rentAmount) => {this.zillowNext(rentAmount)}} address={this.props.steps.formData.address} zip={this.props.steps.formData.zip} onPrevious={this.zillowPrevious} />
 				);
 			case STEPS.COMPLETE:
 				return(

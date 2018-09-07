@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="75px" height="78px" viewBox="0 0 75 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>2FF6BB16-8AC0-44FC-B952-BD489EED3B22</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="100.01131%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#30E18B" offset="0%"></stop>
+            <stop stop-color="#81FFBC" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="14.7019272%" y1="17.2871149%" x2="58.3787053%" y2="62.9579984%" id="linearGradient-2">
+            <stop stop-color="#81FFBC" offset="0%"></stop>
+            <stop stop-color="#30E18B" offset="85%"></stop>
+        </linearGradient>
+        <radialGradient cx="-10.3438387%" cy="140.702063%" fx="-10.3438387%" fy="140.702063%" r="127.299328%" gradientTransform="translate(-0.103438,1.407021),scale(0.853333,1.000000),translate(0.103438,-1.407021)" id="radialGradient-3">
+            <stop stop-color="#5F42FF" offset="0%"></stop>
+            <stop stop-color="#5A54F2" offset="15%"></stop>
+            <stop stop-color="#4C83D0" offset="46%"></stop>
+            <stop stop-color="#36CD9A" offset="89%"></stop>
+            <stop stop-color="#30E18B" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop_form_03" transform="translate(-475.000000, -172.000000)" fill-rule="nonzero">
+            <g id="green_bird" transform="translate(475.000000, 172.000000)">
+                <path d="M46.7213086,13 L58.5660797,12.2916409 C62.9901725,12.0260062 67.7485301,7.05944274 65.3614862,0 C59.6003343,5.32074304 44,4.47151704 44,4.47151704" id="Shape" fill="url(#linearGradient-1)"></path>
+                <rect id="Rectangle-path" fill="#4D54B3" x="41" y="68" width="24" height="2"></rect>
+                <polygon id="Shape" fill="#050D30" points="27 18 19 19.8705463 25.4008351 25"></polygon>
+                <polygon id="Shape" fill="#4D54B3" points="27 18 19 19.839237 26.5824635 21"></polygon>
+                <path d="M29.3069226,44 C21.5739965,33.3965813 19.7375254,20.3677471 30.7642513,10.0597315 C41.0721864,0.412486225 58.0151141,2.78737217 67,13.6201171" id="Shape" fill="url(#linearGradient-2)"></path>
+                <circle id="Oval" fill="#FFFFFF" transform="translate(34.500000, 19.500000) rotate(-26.550000) translate(-34.500000, -19.500000) " cx="34.5" cy="19.5" r="3.5"></circle>
+                <ellipse id="Oval" fill="#000000" transform="translate(33.500000, 19.000000) rotate(-38.520000) translate(-33.500000, -19.000000) " cx="33.5" cy="19" rx="1.5" ry="2"></ellipse>
+                <circle id="Oval" fill="#FFFFFF" transform="translate(35.000000, 18.000000) rotate(-38.520000) translate(-35.000000, -18.000000) " cx="35" cy="18" r="1"></circle>
+                <path d="M66.7146609,14 C72.868758,21.6144506 75.783961,31.3940618 74.8186484,41.1863915 C73.8533358,50.9787211 69.0866237,59.9812017 61.5676407,66.2124336 L61.5676407,66.1287854 C37.6727274,85.0014215 10.3412246,77.795723 0,68.9768087 L38.3726278,37.5091381" id="Shape" fill="url(#radialGradient-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

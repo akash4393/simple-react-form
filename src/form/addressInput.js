@@ -4,15 +4,17 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import './addressInput.css'
 
 class AddressInput extends React.Component {
   constructor(props) {
     super(props);
+    this.props = props;
     this.state = { 
-		address: '',
+		address: this.props.data.address || '',
 		zip: '',
 		error: '',
-		formValid: false
+		formValid: this.props.data.address ? true : false
     };
   }
 
@@ -67,7 +69,7 @@ class AddressInput extends React.Component {
 				onError={this.handleError.bind(this)}
 			>
 			{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-				<div>
+				<div className="address-input-wrapper">
 					<TextField
 						{...getInputProps({
 						placeholder: 'Search Places ...',
@@ -76,7 +78,7 @@ class AddressInput extends React.Component {
 						id="address-input"
 						label="Enter Address"
 						placeholder="eg. 1 Important Road, Palo Alto, CA"
-						className={`text-input ${this.props.customClass}`}
+						className={`address-text-input ${this.props.customClass}`}
 						margin="normal"
 						value={this.state.address}
 					/>
@@ -88,8 +90,9 @@ class AddressInput extends React.Component {
 							: 'suggestion-item';
 							// inline style for demonstration purpose
 							const style = suggestion.active
-							? { backgroundColor: '#fafafa', cursor: 'pointer' }
-							: { backgroundColor: '#ffffff', cursor: 'pointer' };
+							? { cursor: 'pointer' }
+							: { cursor: 'pointer' };
+							document.querySelector('.submit-address-wrapper').style.paddingTop = '0%';
 							return (
 								<div
 									{...getSuggestionItemProps(suggestion, {
@@ -105,15 +108,17 @@ class AddressInput extends React.Component {
 				</div>
 			)}
 			</PlacesAutocomplete>
-			<Button 
-				variant="contained" 
-				color="primary" 
-				className='' 
-				onClick={() => {this.nextOnClick()}}
-				disabled={!this.state.formValid}
-			>
-				Next
-			</Button>
+			<div className="submit-address-wrapper">
+				<Button 
+					variant="contained" 
+					color="primary" 
+					className='' 
+					onClick={() => {this.nextOnClick()}}
+					disabled={!this.state.formValid}
+				>
+					Estimate Rent
+				</Button>
+			</div>
 		</div>
 	);
   }

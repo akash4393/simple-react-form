@@ -1,0 +1,82 @@
+.basic-contact-wrapper {
+	padding: 6% 21% 0% 21%;
+}
+
+.basic-contact-wrapper .first-name-text-input {
+	width: 28.8%;
+	padding-bottom: 1.6%;
+}
+
+.basic-contact-wrapper .last-name-text-input {
+	width: 28.8%;
+	padding-bottom: 1.6%;
+}
+
+.basic-contact-wrapper .contact-text-input {
+	width: 57.6%;
+	padding-bottom: 1.6%;
+}
+
+.basic-contact-wrapper .email-text-input {
+	width: 57.6%;
+	padding-bottom: 1.6%;
+}
+
+.privacy-agreement {
+	padding-top: 6%;
+	font-family: 'Helvetica Neue sans-serif';
+	font-size: 14px;
+	color: #AAAAAA;
+}
+
+.privacy-agreement a {
+	color: #009BFF;
+}
+
+.submit-basic-contact-wrapper {
+	padding-top: 5%; 
+}
+
+.submit-basic-contact-wrapper button {
+	width: 36.9%;
+	border-radius: 0px;
+}
+
+@media only screen and (max-width: 480px) {
+	.basic-contact-wrapper {
+		padding: 0%;
+		padding: 1.6% 0% 0% 0%;
+		position: fixed;
+		top: 72px;
+		width: 100%;
+	}
+
+	.basic-contact-wrapper .first-name-text-input {
+		width: 49%;
+	}
+
+	.basic-contact-wrapper .last-name-text-input {
+		width: 49%;
+	}
+
+	.basic-contact-wrapper .contact-text-input {
+		width: 98%;
+	}
+
+	.basic-contact-wrapper .email-text-input {
+		width: 98%;
+	}
+
+	.submit-basic-contact-wrapper {
+		padding-top: 5%; 
+	}
+
+	.submit-basic-contact-wrapper button {
+		position: fixed;
+		width: 100%;
+		height: 50px;
+		bottom: 1px;
+		left: 0px;
+		border-radius: 0px;
+	}
+}

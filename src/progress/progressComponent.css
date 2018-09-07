@@ -1,0 +1,91 @@
+.nav-wrapper {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 13.8%;
+	background-color: #FFFFFF;
+}
+
+.hidden {
+	display: none;
+}
+
+.back-button {
+	position: absolute;
+	z-index: 100;
+	width: 35px;
+	height: 35px;
+	top: 35%;
+	left: 7%;
+}
+
+.back-button img {
+	width: 100%;
+	height: auto;
+}
+
+.twenty-four-seven-image-wrapper {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	top: 24%;
+	right: 7%;
+}
+
+.twenty-four-seven-image-wrapper img {
+	width: 100%;
+	height: auto;	
+}
+
+.nav-wrapper nav h1 {
+	font-family: 'Helvetica Neue sans-serif';
+	color: #555555;
+	font-size: 24px;
+	position: relative;
+	top: 38px;
+	margin: 0px;
+	width: auto;
+}
+
+.nav-wrapper > nav > button {
+	font-size: 20px;
+	position: absolute;
+	left: 75px;
+	top: 67px;
+	width: 20px;
+	height: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .nav-wrapper {
+		height: 64px;
+	}
+  .back-button {
+		width: 30px;
+		height: 30px;
+		top: 20px;
+		left: 13px;
+	}
+
+	.twenty-four-seven-image-wrapper {
+		width: 30px;
+		height: 30px;
+		top: 20px;
+		right: 13px;
+	}
+
+	.nav-wrapper nav h1 {
+		font-size: 16px;
+		top: 26px;
+	}
+
+	.nav-wrapper > nav > button {
+		font-size: 20px;
+		position: absolute;
+		left: 75px;
+		top: 67px;
+		width: 20px;
+		height: 20px;
+	}
+}
+

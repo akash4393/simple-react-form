@@ -4,24 +4,32 @@ import FormComponent from './form/formComponent';
 import ProgressComponent from './progress/progressComponent';
 import HistoryComponent from './history/historyComponent';
 import InstructionsComponent from './instructions/instructionsComponent';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+    light: '#008AEE',
+    main: '#009BFF',
+    dark: '#008AEE',
+    contrastText: '#fff',
+    },
+  }
+})
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      	<div className="progress-wrapper">
-      		<ProgressComponent />
-      	</div>
-        <div className="form-wrapper">
-        	<FormComponent />
-        </div>
-        <div className="history-wrapper">
-        	<HistoryComponent />
-        </div>
-        <div className="instructions-wrapper">
-        	{InstructionsComponent()}
-        </div>
+        <MuiThemeProvider theme={theme}>
+        	<div className="progress-wrapper">
+        		<ProgressComponent />
+        	</div>
+          <div className="form-wrapper">
+          	<FormComponent />
+          </div>
+        </MuiThemeProvider>
       </div>
     );
   }

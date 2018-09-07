@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import './zillowInput.css';
 
 const baseUrl = window.location.href;
 
@@ -9,13 +10,14 @@ class ZillowInput extends React.Component {
 		super(props);
 		this.props = props;
 		this.state = {
-			rent: 0,
+			rent: this.props.data.rent || '',
 			rentEstimateLow: 0,
 			rentEstimateHigh: 0,
 			formError: '',
-			formValid: false,
-			loading: true,
-			messageCode: 999
+			formValid: this.props.data.rent ? true : false,
+			loading: this.props.data.rent ? false : true,
+			messageCode: 999,
+			zillowRent: this.props.data.rent || 0
 		}
 		this.sendRequest();
 	}
@@ -73,13 +75,18 @@ class ZillowInput extends React.Component {
 		this.setState({
 			rentEstimateLow: rentEstimateLow,
 			rentEstimateHigh: rentEstimateHigh,
-			rent: monthlyRent,
+			zillowRent: monthlyRent,
 			messageCode: messageCode
 		}, this.validateForm)
 	}
 
 	validateForm() {
-		let rentConditionsMet = this.state.rent !== 0 && (this.state.rent <= this.state.rentEstimateHigh && this.state.rent >= this.state.rentEstimateLow);
+		let rentConditionsMet;
+		if(this.state.rent === undefined || this.state.rent === '') {
+			rentConditionsMet = true;
+		} else {
+			rentConditionsMet = this.state.rent !== 0 && (this.state.rent <= this.state.rentEstimateHigh && this.state.rent >= this.state.rentEstimateLow);
+		}
 		let noErrors = this.state.formError === '';
 		if(rentConditionsMet) {
 			this.setState({
@@ -88,7 +95,7 @@ class ZillowInput extends React.Component {
 			})
 		} else {
 			this.setState({
-				formError: 'Please enter a rent value within the displayed range.',
+				formError: 'Please enter a rent value within range.',
 				formValid: false
 			});
 		}
@@ -116,38 +123,47 @@ class ZillowInput extends React.Component {
 		if(this.state.loading) {
 			return (
 				<div>
-					Loading...
+					<h1>Loading...</h1>
 				</div>
 			);
 		} else if(!this.state.loading && this.state.messageCode === 0) {
 			return (
-				<div>
-					<h4>Range</h4>
-					<p>
-						<span>{this.state.rentEstimateLow}</span>
-						-
-						<span>{this.state.rentEstimateHigh}</span>
+				<div className="zillow-input-wrapper">
+					<img src="images/green_bird.svg" />
+					<h2>Found your place!</h2>
+					<p className="market-text">
+						Based on market data,<br />
+						we estimate you can change this much monthly:
+					</p>
+					<div className="zillow-rent-response">
+						${this.state.zillowRent}
+					</div>
+					<p className="did-you-expect-text">
+						Did you expect a different amount?<br />
+						We'll try to make it happen!
 					</p>
 					<TextField
 						error={!this.state.formValid}
 						id="rent-input"
-						label="Enter Rent"
-						placeholder="Enter Rent"
-						className={`text-input ${this.props.customClass}`}
+						label="Preferred Rent ($)"
+						placeholder="Preferred Rent ($)"
+						className={`preferred-rent-text-input ${this.props.customClass}`}
 						margin="normal"
 						value={this.state.rent}
 						onChange={(e) => {this.updateRentValue(e.target.value)}}
 						helperText={this.state.formError}
 					/>
-					<Button 
-					variant="contained" 
-					color="primary" 
-					className='' 
-					onClick={() => {this.nextOnClick()}}
-					disabled={!this.state.formValid}
-					>
-						Next
-					</Button>
+					<div className="done-button-wrapper">
+						<Button 
+						variant="contained" 
+						color="primary" 
+						className='' 
+						onClick={() => {this.nextOnClick()}}
+						disabled={!this.state.formValid}
+						>
+							Done
+						</Button>
+					</div>
 				</div>
 			);
 		} else if(!this.state.loading && this.state.messageCode !== 0) {

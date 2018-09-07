@@ -1,25 +1,28 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import './basicContact.css';
+
 
 class BasicContact extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
+		console.log(this.props);
 		this.state = {
-			firstNameValid: false,
-			firstNameValue: '',
+			firstNameValid: this.props.data.firstName ? true : false,
+			firstNameValue: this.props.data.firstName || '',
 			firstNameError: '',
-			lastNameValid: false,
-			lastNameValue: '',
+			lastNameValid: this.props.data.lastName ? true : false,
+			lastNameValue: this.props.data.lastName || '',
 			lastNameError: '',
-			contactValid: false,
-			contactValue: '',
+			contactValid: this.props.data.contactValue ? true : false,
+			contactValue: this.props.data.contactValue || '',
 			contactError: '',
-			emailValid: false,
-			emailValue: '',
+			emailValid: this.props.data.emailValue ? true : false,
+			emailValue: this.props.data.emailValue || '',
 			emailError: '',
-			formValid: false
+			formValid: this.props.data.firstName ? true : false
 		};
 	}
 
@@ -48,7 +51,6 @@ class BasicContact extends React.Component {
 			} else {
 				this.setState({
 					firstNameValid: false,
-					firstNameValue: '',
 					firstNameError: 'Please enter a valid first name'
 				}, this.validateForm);
 			}
@@ -62,7 +64,6 @@ class BasicContact extends React.Component {
 			} else {
 				this.setState({
 					lastNameValid: false,
-					lastNameValue: '',
 					lastNameError: 'Please enter a valid last name'
 				}, this.validateForm);
 			}
@@ -83,7 +84,6 @@ class BasicContact extends React.Component {
 		} else {
 			this.setState({
 				contactValid: false,
-				contactValue: '',
 				contactError: 'Please enter the number in 555-555-5555 format'
 			}, this.validateForm);
 		}
@@ -103,7 +103,6 @@ class BasicContact extends React.Component {
 		} else {
 			this.setState({
 				emailValid: false,
-				emailValue: value,
 				emailError: 'Please enter a valid email'
 			}, this.validateForm);
 		}
@@ -115,18 +114,35 @@ class BasicContact extends React.Component {
 		this.setState({formValid: formValid});
 	}
 
+	handleFirstNameChange(firstNameValue) {
+		this.setState({ firstNameValue })
+	}
+
+	handleLastNameChange(lastNameValue) {
+		this.setState({ lastNameValue })
+	}
+
+	handleContactChange(contactValue) {
+		this.setState({ contactValue })
+	}
+
+	handleEmailChange(emailValue) {
+		this.setState({ emailValue })
+	}
+
 	render() {
 		return (
-			<div>
-				<h4>Basic Contact information</h4>
+			<div className="basic-contact-wrapper">
 				 <TextField
 				 	error={!this.state.firstNameValid && this.state.firstNameError !== ''}
           			id="first-name"
           			label="First Name"
           			placeholder="First Name"
-          			className={`text-input ${this.props.customClass}`}
+          			className={`first-name-text-input ${this.props.customClass}`}
           			margin="normal"
-          			onChange={(e) => {this.validateFirstLastName(e)}}
+          			value={this.state.firstNameValue}
+          			onChange={(e) => {this.handleFirstNameChange(e.target.value)}}
+          			onBlur={(e) => {this.validateFirstLastName(e)}}
           			helperText={this.state.firstNameError}
         		/>
         		<TextField
@@ -134,20 +150,23 @@ class BasicContact extends React.Component {
           			id="last-name"
           			label="Last Name"
           			placeholder="Last Name"
-          			className={`text-input ${this.props.customClass}`}
+          			className={`last-name-text-input ${this.props.customClass}`}
           			margin="normal"
-          			onChange={(e) => {this.validateFirstLastName(e)}}
+          			value={this.state.lastNameValue}
+          			onChange={(e) => {this.handleLastNameChange(e.target.value)}}
+          			onBlur={(e) => {this.validateFirstLastName(e)}}
           			helperText={this.state.lastNameError}
         		/>
-        		<br />
         		<TextField
         			error={!this.state.contactValid && this.state.contactError !== ''}
           			id="contact-number"
           			label="Contact Number"
           			placeholder="555-555-5555"
-          			className={`text-input ${this.props.customClass}`}
+          			className={`contact-text-input ${this.props.customClass}`}
           			margin="normal"
-          			onChange={(e) => {this.validateContactNumber(e)}}
+          			value={this.state.contactValue}
+          			onChange={(e) => {this.handleContactChange(e.target.value)}}
+          			onBlur={(e) => {this.validateContactNumber(e)}}
           			helperText={this.state.contactError}
         		/>
         		<TextField
@@ -155,21 +174,29 @@ class BasicContact extends React.Component {
           			id="contact-email"
           			label="Email"
           			placeholder="email@example.com"
-          			className={`text-input ${this.props.customClass}`}
+          			className={`email-text-input ${this.props.customClass}`}
           			margin="normal"
-          			onChange={(e) => {this.validateEmail(e)}}
+          			value={this.state.emailValue}
+          			onChange={(e) => {this.handleEmailChange(e.target.value)}}
+          			onBlur={(e) => {this.validateEmail(e)}}
           			helperText={this.state.emailError}
         		/>
         		<br />
-		      	<Button 
-		      		variant="contained" 
-		      		color="primary" 
-		      		className='' 
-		      		onClick={() => {this.nextOnClick()}}
-		      		disabled={!this.state.formValid}
-		      	>
-		        	Next
-		      	</Button>
+        		<div className="privacy-agreement">
+        			<p>By signing up, I agree to Belong’s
+        			<br /><a href="#">Terms of Service</a> 
+        			and <a href="#">Privacy Policy.</a></p>
+        		</div>
+        		<div className='submit-basic-contact-wrapper' >
+        			<Button 
+			      		variant="contained" 
+			      		color="primary" 
+			      		onClick={() => {this.nextOnClick()}}
+			      		disabled={!this.state.formValid}
+			      	>
+			        	Enter Property
+			      	</Button>
+        		</div>
 			</div>
 		);
 	}
