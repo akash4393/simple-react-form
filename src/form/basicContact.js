@@ -21,7 +21,7 @@ class BasicContact extends React.Component {
 			emailValid: this.props.data.emailValue ? true : false,
 			emailValue: this.props.data.emailValue || '',
 			emailError: '',
-			formValid: this.props.data.firstName ? true : false
+			formValid: true//this.props.data.firstName ? true : false
 		};
 	}
 
@@ -129,7 +129,7 @@ class BasicContact extends React.Component {
 		this.setState({ emailValue })
 	}
 
-	render() {
+	/*render() {
 		return (
 			<div className="basic-contact-wrapper">
 				 <TextField
@@ -195,6 +195,57 @@ class BasicContact extends React.Component {
 			      	>
 			        	Enter Property
 			      	</Button>
+        		</div>
+			</div>
+		);
+	}*/
+	render() {
+		return (
+			<div className="basic-contact-wrapper">
+				<div className="basic-contact-inner">
+					<div className="first-name-group">
+						<input type="text" className="first-name-text-input" placeholder="First Name"/>
+						<div className="first-name-image-wrapper">
+							<img src="images/ic_profile_firstname@2x.png" />
+						</div>
+					</div>
+	        		<div className="last-name-group">
+						<input type="text" className="last-name-text-input" placeholder="Last Name"/>
+					</div>
+					<div className="email-group">
+						<input type="text" className="email-text-input" placeholder="Email"/>
+						<div className="email-image-wrapper">
+							<img src="images/ic_profile_email@2x.png" />
+						</div>
+					</div>
+					<div className="password-group">
+						<input type="password" className="password-text-input" placeholder="Password"/>
+						<div className="password-image-wrapper">
+							<img src="images/ic_profile_password@2x.png" />
+						</div>
+					</div>
+					<div className="contact-group">
+						<input type="text" className="contact-text-input" placeholder="Phone Number"/>
+						<div className="contact-image-wrapper">
+							<img src="images/ic_profile_phone@2x.png" />
+						</div>
+					</div>
+	        		<br />
+	        		<div className="privacy-agreement">
+	        			<p>By signing up, I agree to Belong’s
+	        			<br /><a href="#">Terms of Service </a> 
+	        			and <a href="#">Privacy Policy.</a></p>
+	        		</div>
+	        		<div className='submit-basic-contact-wrapper' >
+	        			<Button 
+				      		variant="contained" 
+				      		color="primary" 
+				      		onClick={() => {this.nextOnClick()}}
+				      		disabled={!this.state.formValid}
+				      	>
+				        	Enter Property
+				      	</Button>
+	        		</div>
         		</div>
 			</div>
 		);

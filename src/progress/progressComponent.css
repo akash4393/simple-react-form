@@ -2,8 +2,9 @@
 	position: fixed;
 	top: 0px;
 	width: 100%;
-	height: 13.8%;
+	height: 15.8%;
 	background-color: #FFFFFF;
+	z-index: 1000;
 }
 
 .hidden {
@@ -28,7 +29,7 @@
 	position: absolute;
 	width: 60px;
 	height: 60px;
-	top: 24%;
+	top: 28%;
 	right: 7%;
 }
 
@@ -37,12 +38,16 @@
 	height: auto;	
 }
 
+.nav-wrapper nav {
+	height: 100%;
+}
+
 .nav-wrapper nav h1 {
 	font-family: 'Helvetica Neue sans-serif';
 	color: #555555;
 	font-size: 24px;
 	position: relative;
-	top: 38px;
+	top: 40%;
 	margin: 0px;
 	width: auto;
 }
@@ -51,7 +56,7 @@
 	font-size: 20px;
 	position: absolute;
 	left: 75px;
-	top: 67px;
+	top: 45%;
 	width: 20px;
 	height: 20px;
 }
