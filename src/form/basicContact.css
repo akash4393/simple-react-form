@@ -12,6 +12,7 @@
 .basic-contact-inner {
 	height: 100%;
 	width: 100%;
+	border-top: 1px solid #EDEDED;
 }
 
 .basic-contact-wrapper input {
@@ -183,6 +184,7 @@
 @media only screen and (max-width: 480px) {
 	.basic-contact-wrapper {
 		min-width: 0px;
+		min-height: 330px;
 		margin-top: 10px;
 		width: 100%;
 		padding: 0px;
@@ -221,7 +223,7 @@
 
 	.last-name-group .last-name-text-input {
 		top: 24px;
-		left: 252px;
+		left: 218px;
 	}
 
 	.email-group {
@@ -282,5 +284,9 @@
 		bottom: 0px;
 		width: 100%;
 		height: 50px;
+	}
+
+	.submit-basic-contact-wrapper button {
+		width: 100%;
 	}
 }
