@@ -2,8 +2,9 @@
 	position: fixed;
 	top: 0px;
 	width: 100%;
-	height: 15.8%;
+	height: 136px;
 	background-color: #FFFFFF;
+	border-bottom: 2px solid #EDEDED;
 	z-index: 1000;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .nav-wrapper nav h1 {
-	font-family: 'Helvetica Neue sans-serif';
+	font-weight: 100;
 	color: #555555;
 	font-size: 24px;
 	position: relative;
@@ -61,7 +62,7 @@
 	height: 20px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 593px) {
   .nav-wrapper {
 		height: 64px;
 	}
